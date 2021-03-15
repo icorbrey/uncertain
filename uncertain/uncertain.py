@@ -95,18 +95,18 @@ def _add(left, right):
 
 def _add_certain(left, right):
     """Adds two values, where one is certain and the other is uncertain, and
-        returns the result."""
+            returns the result."""
 
     if _is_number(left):
         return Uncertain(
             value=right.value + left,
             delta=right.delta,
         )
-    else:
-        return Uncertain(
-            value=left.value + right,
-            delta=left.delta,
-        )
+
+    return Uncertain(
+        value=left.value + right,
+        delta=left.delta,
+    )
 
 
 def _add_uncertain(left, right):
@@ -128,18 +128,18 @@ def _sub(left, right):
 
 def _sub_certain(left, right):
     """Subtracts two values, where one is certain and the other is uncertain,
-        and returns the result."""
+            and returns the result."""
 
     if _is_number(left):
         return Uncertain(
             value=left - right.value,
             delta=right.delta,
         )
-    else:
-        return Uncertain(
-            value=left.value - right,
-            delta=left.delta,
-        )
+
+    return Uncertain(
+        value=left.value - right,
+        delta=left.delta,
+    )
 
 
 def _sub_uncertain(left, right):
@@ -161,18 +161,18 @@ def _mul(left, right):
 
 def _mul_certain(left, right):
     """Multiplies two values, where one is certain and the other is uncertain,
-        and returns the result."""
+            and returns the result."""
 
     if _is_number(left):
         return Uncertain(
             value=right.value * left,
             delta=right.delta,
         )
-    else:
-        return Uncertain(
-            value=left.value * right,
-            delta=left.delta,
-        )
+
+    return Uncertain(
+        value=left.value * right,
+        delta=left.delta,
+    )
 
 
 def _mul_uncertain(left, right):
@@ -195,18 +195,18 @@ def _div(left, right):
 
 def _div_certain(left, right):
     """Divides two values, where one is certain and the other is uncertain, and
-        returns the result."""
+            returns the result."""
 
     if _is_number(left):
         return Uncertain(
             value=right.value / left,
             delta=right.delta,
         )
-    else:
-        return Uncertain(
-            value=left.value / right,
-            delta=left.delta,
-        )
+
+    return Uncertain(
+        value=left.value / right,
+        delta=left.delta,
+    )
 
 
 def _div_uncertain(left, right):
@@ -230,6 +230,7 @@ def _pow(uncertain, power):
 
 def _throw_operands(operator, left, right):
     """Throws a TypeError outlining the given operator and the types of the operands."""
+
     raise TypeError(
         f'unsupported operand types for {operator}: '
         f'\'{_typestr(left)}\' and \'{_typestr(right)}\''
@@ -256,6 +257,6 @@ def _is_number(value):
 
 def _is_operable(value):
     """Returns whether the given value can be operated on with Uncertain
-        objects."""
+            objects."""
 
     return _is_number(value) or _is_uncertain(value)
