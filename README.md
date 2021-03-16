@@ -1,4 +1,4 @@
-# `uncertain`
+# uncertain
 
 Defines a mathematically uncertain number type for scientific applications.
 Uncertain values can be added, subtracted, multiplied, and divided by each
